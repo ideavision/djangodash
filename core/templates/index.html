@@ -1,0 +1,75 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header ">
+              <h2 class="card-title">Dashboard List</h2>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter " id="">
+                <thead class=" text-blue">
+                  <tr>
+                    <th>
+                      ID
+                    </th>
+                    <th>
+                      Title
+                    </th>
+                    <th>
+                      Creator
+                    </th>
+                    <th>
+                      Orginal File Name
+                    </th>
+                    <th class="text-center">
+                      Dash URL
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for dash in dash_apps %}
+                  <tr>
+                    <td>
+                      {{ dash.unique_id }}
+                    </td>
+                    <td>
+                      {{ dash.title }}
+                    </td>
+                    <td>
+                      {{ dash.creator.username }}
+                    </td>
+                    <td>
+                      {{ dash.dash_orginal_name }}
+                    </td>
+                    <td class="text-center">
+                      <a href="{% url 'app:dash_show' dash.unique_id %}">View</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% if request.user.is_superuser %}
+          <div class="card-footer">    
+              <a href="{% url 'app:dash_create' %}" class="btn btn-blue btn-round">Create Dashboard</a>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

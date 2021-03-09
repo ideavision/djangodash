@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %} Page Blank {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    {% load plotly_dash %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-category">
+                      {% if msg %}
+                        <span class="text-danger">{{ msg | safe }}</span>
+                      {% else %}
+                        Dash Preview
+                      {% endif %}  
+                  </h6>
+                    <h4 class="card-title">
+                        {% if app_name %}
+                            <div class="{% plotly_class name=app_name %} card" style="height: 100%; width: 100%">
+                                {% plotly_app name=app_name ratio=0.45 %}
+                            </div>
+                        {% else %}
+                            <p>Unable to load dash app.</p>
+                        {% endif %}
+                    </h4>
+                    <a href="/" class="btn btn-blue btn-round">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock javascripts %}
