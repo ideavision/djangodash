@@ -19,17 +19,13 @@
                 <thead class=" text-blue">
                   <tr>
                     <th>
-                      ID
+                      Date Created
                     </th>
                     <th>
                       Title
                     </th>
-                    <th>
-                      Creator
-                    </th>
-                    <th>
-                      Orginal File Name
-                    </th>
+                    
+                   
                     <th class="text-center">
                       Dash URL
                     </th>
@@ -39,17 +35,12 @@
                 {% for dash in dash_apps %}
                   <tr>
                     <td>
-                      {{ dash.unique_id }}
+                      {{ dash.date_created }}
                     </td>
                     <td>
                       {{ dash.title }}
                     </td>
-                    <td>
-                      {{ dash.creator.username }}
-                    </td>
-                    <td>
-                      {{ dash.dash_orginal_name }}
-                    </td>
+                  
                     <td class="text-center">
                       <a href="{% url 'app:dash_show' dash.unique_id %}">View</a>
                     </td>

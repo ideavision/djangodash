@@ -1,16 +1,16 @@
 
-
+{%load static %}
     <div class="sidebar" data="blue">
       <div class="sidebar-wrapper">
         
         <div class="logo">
-          <a 
+          <!-- <a 
              href="{% url 'app:home' %}" class="simple-text logo-mini">
             BD
-          </a>
+          </a> -->
           <a
              href="{% url 'app:home' %}" class="simple-text logo-normal">
-            SKF
+             <img src="{% static 'assets/img/logo.png' %}" alt="Profile Photo">
           </a>
         </div>
         
